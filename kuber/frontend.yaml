@@ -6,7 +6,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 3
+  replicas: 1
   # Стратегия развёртывания. Recreate — удалит сначала все старые поды 
   # Есть и более гибкая стратегии, например, RollingUpdate, которая будет обновлять поды порциями  
   strategy:
@@ -21,8 +21,9 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-store-multistage:latest
+        #  image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-store-multistage:latest
         #  image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-frontend:latest
+          image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-store-kuber:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: VAULT_HOST
@@ -44,7 +45,7 @@ spec:
             timeoutSeconds: 1
             failureThreshold: 6
       imagePullSecrets:
-        - name: docker-config-secret
+        - name: regcred
 
 ---
 apiVersion: v1
