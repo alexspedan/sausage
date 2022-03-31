@@ -35,4 +35,4 @@ spec:
             - name: backend
               containerPort: 8081
       imagePullSecrets:
-        - name: docker-config-secret
+        - name: regcred
