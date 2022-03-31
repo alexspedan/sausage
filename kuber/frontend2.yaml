@@ -24,6 +24,9 @@ spec:
           image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-store-kuber:latest
         #  image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-store-multistage:latest
         #  image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-frontend:latest
+          ports:
+            - name: frontend
+              containerPort: 80
           imagePullPolicy: IfNotPresent
           env:
             - name: VAULT_HOST
@@ -33,11 +36,8 @@ spec:
                 secretKeyRef:
                   name: vault
                   key: vault_token
-          ports:
-            - name: frontend
-              containerPort: 80
           volumeMounts:
-            - mountPath: /etc/nginx # mount nginx-conf volumn to /etc/nginx
+            - mountPath: /etc/nginx # mount nginx-conf volume to /etc/nginx
               readOnly: true
               name: nginx-conf
             - mountPath: /var/log/nginx
