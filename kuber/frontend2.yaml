@@ -28,31 +28,31 @@ spec:
             - name: frontend
               containerPort: 80
           imagePullPolicy: Always
-          env:
-            - name: VAULT_HOST
-              value: http://sausage-store.alexpedan.ml:8200/
-            - name: VAULT_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: vault
-                  key: vault_token
-          volumeMounts:
-            - mountPath: /etc/nginx # mount nginx-conf volume to /etc/nginx
-              readOnly: true
-              name: nginx-conf
-            - mountPath: /var/log/nginx
-              name: log
-      volumes:
-        - name: nginx-conf
-          configMap:
-          name: nginx-conf # place ConfigMap `nginx-conf` on /etc/nginx
-          items:
-            - key: nginx.conf
-              path: nginx.conf
-            - key: virtualhost.conf
-              path: virtualhost/virtualhost.conf # dig directory
-        - name: log
-          emptyDir: {}          
+        #  env:
+        #    - name: VAULT_HOST
+        #      value: http://sausage-store.alexpedan.ml:8200/
+        #    - name: VAULT_TOKEN
+        #      valueFrom:
+        #        secretKeyRef:
+        #          name: vault
+        #          key: vault_token
+        #  volumeMounts:
+        #    - mountPath: /etc/nginx # mount nginx-conf volume to /etc/nginx
+        #      readOnly: true
+        #      name: nginx-conf
+        #    - mountPath: /var/log/nginx
+        #      name: log
+     # volumes:
+     #   - name: nginx-conf
+     #     configMap:
+     #     name: nginx-conf # place ConfigMap `nginx-conf` on /etc/nginx
+     #     items:
+     #       - key: nginx.conf
+     #         path: nginx.conf
+     #       - key: virtualhost.conf
+     #         path: virtualhost/virtualhost.conf # dig directory
+     #   - name: log
+     #     emptyDir: {}          
       imagePullSecrets:
         - name: regcred
 
