@@ -5,10 +5,6 @@ metadata:
   name: nginx-conf
 data:
    virtualhost.conf: |
-     upstream backend {
-      server backend;
-     }
-
      server {      
          listen 80;
 
@@ -16,6 +12,13 @@ data:
              proxy_pass http://frontend;
          }
      }
+     server {
+         listen 8080;
+
+         location / {
+             proxy_pass http://backend;
+         }
+     }     
 ---
 apiVersion: apps/v1
 kind: Deployment
