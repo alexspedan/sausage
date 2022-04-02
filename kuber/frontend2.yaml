@@ -127,15 +127,15 @@ data:
    #     proxy_http_version 1.1;
    #   }
    # }
-   virtualhost.conf: |
-     upstream backend {
-      server backend;
-     }
+  # virtualhost.conf: |
+  #   upstream backend {
+  #    server backend;
+  #   }
 
-     server {
-         listen 80;
+   #  server {
+   #      listen 80;
 
-         location / {
-             proxy_pass http://backend;
-         }
-     }
+   #      location / {
+   #          proxy_pass http://backend;
+   #      }
+   #  }
