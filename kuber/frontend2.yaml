@@ -66,11 +66,10 @@ data:
      }
 
      server {
-         listen 80;
-
-         location / {
-             proxy_pass http://frontend;
-         }
+#         listen 80;
+#         location / {
+#             proxy_pass http://frontend;
+#         }
          
          listen 8080;
 
