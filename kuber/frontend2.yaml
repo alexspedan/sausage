@@ -110,6 +110,9 @@ data:
   #    include /etc/nginx/virtualhost/virtualhost.conf;
   #  }
   virtualhost.conf: |
+    upstream backend {
+      server backend
+    }
   #  upstream app {
   #    server localhost:8080;
   #    keepalive 1024;
