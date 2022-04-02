@@ -9,16 +9,10 @@ data:
          listen 80;
 
          location / {
-             proxy_pass http://frontend;
+             proxy_pass http://backend:8080;
          }
      }
-     server {
-         listen 8080;
-
-         location / {
-             proxy_pass http://backend;
-         }
-     }     
+ 
 ---
 apiVersion: apps/v1
 kind: Deployment
