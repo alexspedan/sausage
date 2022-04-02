@@ -7,10 +7,8 @@ metadata:
     app: frontend
 spec:
   replicas: 1
-  # Стратегия развёртывания. Recreate — удалит сначала все старые поды 
-  # Есть и более гибкая стратегии, например, RollingUpdate, которая будет обновлять поды порциями  
   strategy:
-    type: Recreate
+    type: RollingUpdate
   selector:
     matchLabels:
       app: frontend
@@ -22,37 +20,21 @@ spec:
       containers:
         - name: frontend
           image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-store-kuber:latest
-        #  image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-store-multistage:latest
-        #  image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-frontend:latest
           ports:
             - name: frontend
               containerPort: 80
           imagePullPolicy: Always
-        #  env:
-        #    - name: VAULT_HOST
-        #      value: http://sausage-store.alexpedan.ml:8200/
-        #    - name: VAULT_TOKEN
-        #      valueFrom:
-        #        secretKeyRef:
-        #          name: vault
-        #          key: vault_token
           volumeMounts:
             - mountPath: /etc/nginx/conf.d # mount nginx-conf volume to /etc/nginx
-        #      readOnly: true
+              readOnly: true
               name: nginx-conf
-        #    - mountPath: /var/log/nginx
-        #      name: log
       volumes:
         - name: nginx-conf
           configMap:
           name: nginx-conf # place ConfigMap `nginx-conf` on /etc/nginx
           items:
-     #       - key: nginx.conf
-     #         path: nginx.conf
             - key: virtualhost.conf
-              path: virtualhost.conf # dig directory
-     #   - name: log
-     #     emptyDir: {}          
+              path: virtualhost.conf # dig directory       
       imagePullSecrets:
         - name: regcred
 
@@ -78,55 +60,6 @@ kind: ConfigMap
 metadata:
   name: nginx-conf
 data:
-  #nginx.conf: |
-  #  user nginx;
-  #  worker_processes  3;
-  #  error_log  /var/log/nginx/error.log;
-  #  events {
-  #    worker_connections  10240;
-  #  }
-  #  http {
-  #    log_format  main
-  #            'remote_addr:$remote_addr\t'
-  #            'time_local:$time_local\t'
-  #            'method:$request_method\t'
-  #            'uri:$request_uri\t'
-  #            'host:$host\t'
-  #            'status:$status\t'
-  #            'bytes_sent:$body_bytes_sent\t'
-  #            'referer:$http_referer\t'
-  #            'useragent:$http_user_agent\t'
-  #            'forwardedfor:$http_x_forwarded_for\t'
-  #            'request_time:$request_time';
-  #    access_log	/var/log/nginx/access.log main;
-  #    server {
-  #        listen       80;
-  #        server_name  _;
-  #        location / {
-  #            root   html;
-  #            index  index.html index.htm;
-  #        }
-  #    }
-  #    include /etc/nginx/virtualhost/virtualhost.conf;
-  #  }
-  #virtualhost.conf: |
-  #  upstream backend {
-  #    server backend
-  #  }
-  #  upstream app {
-  #    server localhost:8080;
-  #    keepalive 1024;
-  #  }
-   # server {
-   #   listen 8080 default_server;
-   #   root /usr/local/app;
-   #   access_log /var/log/nginx/app.access_log main;
-   #   error_log /var/log/nginx/app.error_log;
-   #   location / {
-   #     proxy_pass http://backend;
-   #     proxy_http_version 1.1;
-   #   }
-   # }
    virtualhost.conf: |
      upstream backend {
       server backend;
