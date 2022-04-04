@@ -32,7 +32,7 @@ spec:
                   name: vault
                   key: vault_token
           ports:
-            - name: backend
+            - name: backend-report
               containerPort: 8081
       imagePullSecrets:
         - name: regcred
