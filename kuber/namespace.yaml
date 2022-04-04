@@ -4,7 +4,7 @@ kind: Secret
 metadata:
   name: vault
 data:
-  host: dmF1bHQuYWxleHBlZGFuLm1sOjgyMDAK
+  host: dmF1bHQuYWxleHBlZGFuLm1sCg==
   vault_token: bXlyb290Cg==
 type: Opaque
 
