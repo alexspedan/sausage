@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: VAULT_HOST
-              value: http://sausage-store.alexpedan.ml:8200/
+              value: sausage-store.alexpedan.ml
             - name: VAULT_TOKEN
               valueFrom:
                 secretKeyRef:
