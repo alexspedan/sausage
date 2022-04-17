@@ -35,6 +35,8 @@ spec:
               value: jdbc:postgresql://rc1b-ddr4cnexjyd5olyl.mdb.yandexcloud.net:6432/sausages
             - name: spring.datasource.login
               value: alexspedan
+            - name: spring.datasource.password
+              value: Testusr1234             
           ports:
             - name: backend
               containerPort: 8080
