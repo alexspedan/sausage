@@ -27,10 +27,7 @@ spec:
             - name: VAULT_HOST
               value: sausage-store.alexpedan.ml
             - name: VAULT_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: vault
-                  key: vault_token
+              value: myroot
             - name: spring.datasource.url
               value: jdbc:postgresql://rc1b-ddr4cnexjyd5olyl.mdb.yandexcloud.net:6432/sausages
             - name: spring.datasource.username
