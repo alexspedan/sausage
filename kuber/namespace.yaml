@@ -5,7 +5,7 @@ metadata:
   name: vault
 data:
   host: dmF1bHQuYWxleHBlZGFuLm1sCg==
-  vault_token: bXlyb290Cg==
+  vault_token: bXlyb290
 type: Opaque
 
 ---
