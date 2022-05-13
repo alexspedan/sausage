@@ -22,7 +22,7 @@ spec:
       containers:
         - name: backend
           image: gitlab.praktikum-services.ru:5050/aspedan/sausage-store/sausage-store:latest
-          imagePullPolicy: always
+          imagePullPolicy: Always
           env:
             - name: VAULT_HOST
               value: sausage-store.alexpedan.ml
