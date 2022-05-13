@@ -33,7 +33,7 @@ spec:
                   key: vault_token
             - name: spring.datasource.url
               value: jdbc:postgresql://rc1b-ddr4cnexjyd5olyl.mdb.yandexcloud.net:6432/sausages
-            - name: spring.datasource.login
+            - name: spring.datasource.username
               value: alexspedan
             - name: spring.datasource.password
               value: Testusr1234             
