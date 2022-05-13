@@ -36,7 +36,11 @@ spec:
             - name: spring.datasource.username
               value: alexspedan
             - name: spring.datasource.password
-              value: Testusr1234             
+              value: Testusr1234
+            - name: SPRING_CLOUD_VAULT_SCHEME
+              value: http
+            - name: SPRING_FLYWAY_ENABLED
+              value: false
           ports:
             - name: backend
               containerPort: 8080
