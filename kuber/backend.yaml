@@ -37,7 +37,7 @@ spec:
             - name: SPRING_CLOUD_VAULT_SCHEME
               value: http
             - name: SPRING_FLYWAY_ENABLED
-              value: false
+              value: "false"
           ports:
             - name: backend
               containerPort: 8080
