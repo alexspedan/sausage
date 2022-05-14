@@ -28,6 +28,16 @@ spec:
               value: sausage-store.alexpedan.ml
             - name: VAULT_TOKEN
               value: myroot
+            - name: spring.datasource.url
+              value: jdbc:postgresql://rc1b-ddr4cnexjyd5olyl.mdb.yandexcloud.net:6432/sausages
+            - name: spring.datasource.username
+              value: alexspedan
+            - name: spring.datasource.password
+              value: Testusr1234
+            - name: SPRING_CLOUD_VAULT_SCHEME
+              value: http
+            - name: SPRING_FLYWAY_ENABLED
+              value: "false"
           ports:
             - name: backend-report
               containerPort: 8081
