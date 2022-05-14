@@ -38,6 +38,8 @@ spec:
               value: http
             - name: SPRING_FLYWAY_ENABLED
               value: "false"
+            - name: spring.application.name
+              value: sausage-store-report
           ports:
             - name: backend-report
               containerPort: 8081
