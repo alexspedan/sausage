@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: frontend
 spec:
+  kubernetes.io/ingress.class: nginx
   rules:
     # Хост определяет правило направления траффика по доменному имени
   - host: "pedan-aleksey-01.1.k8s.praktikum-services.tech"
